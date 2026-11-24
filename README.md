@@ -1,6 +1,6 @@
 # Maqueta 3D del Auditorio Telmex
 
-Anteproyecto para construir una maqueta grande, desmontable y documentada del Auditorio Telmex, ubicado en Zapopan, Jalisco, México. El proyecto combina fabricación manual, modelado 3D en Blender y herramientas de inteligencia artificial ejecutadas localmente.
+Anteproyecto para construir una maqueta grande, desmontable y documentada del Auditorio Telmex, ubicado en Zapopan, Jalisco, México. El proyecto combina fabricación manual, modelado 3D en Blender y un procedimiento de fabricación escolar documentado.
 
 > **Estado:** anteproyecto conceptual. Las medidas geométricas que no aparecen en fuentes públicas deberán validarse con planos, fotografías ortogonales, levantamiento propio o información autorizada antes de fabricar piezas definitivas.
 

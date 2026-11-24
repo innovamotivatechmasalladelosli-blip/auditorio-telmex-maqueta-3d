@@ -11,9 +11,3 @@
 - Sustituir gradualmente la volumetría conceptual por geometría levantada de referencias verificadas.
 - Añadir exportación GLB para revisar el modelo y STL/ piezas separadas para fabricación.
 - Incorporar nomenclatura, escala y tolerancias de piezas.
-
-## IA local
-
-- Añadir un panel de prompt conectado opcionalmente a Ollama en la computadora del usuario.
-- Mostrar el script o cambio propuesto antes de aplicarlo.
-- Guardar variantes de materiales y configuraciones en archivos JSON del proyecto.
