@@ -116,12 +116,14 @@ function updateScene(next: SceneKey) {
   const configs: Record<SceneKey, { z: number; h: number; label: string }> = { concert: { z: -3.6, h: 0.35, label: 'PLATAFORMA ADELANTADA' }, theatre: { z: -4.2, h: 0.6, label: 'ESCENARIO PROFUNDO' }, open: { z: -2.7, h: 0.18, label: 'PLATEA ABIERTA' } };
   stage.position.z = configs[next].z; stage.scale.y = configs[next].h / 0.35; screen.visible = next !== 'open';
   document.querySelectorAll('.scene-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-scene') === next));
-  document.querySelector('#objectDetails')!.textContent = `Configuración activa: ${configs[next].label}. Selecciona una pieza para editar su material.`;
+  const details = document.querySelector<HTMLElement>('#objectDetails');
+  if (details) details.textContent = `Configuración activa: ${configs[next].label}. Selecciona una pieza para editar su material.`;
 }
 function selectObject(object: THREE.Object3D | null) {
   selected = object && object.name in editable ? object : null;
   document.querySelector('#selectionLabel')!.textContent = selected ? selected.name.toUpperCase() : 'NINGUNA';
-  document.querySelector('#objectDetails')!.textContent = selected ? `Pieza editable · ${selected.name}. El cambio se aplica solo a esta sesión.` : 'Selecciona una pieza en la vista para cambiar su material.';
+  const details = document.querySelector<HTMLElement>('#objectDetails');
+  if (details) details.textContent = selected ? `Pieza editable · ${selected.name}. El cambio se aplica solo a esta sesión.` : 'Selecciona una pieza en la vista para cambiar su material.';
 }
 
 document.querySelectorAll<HTMLButtonElement>('.scene-btn').forEach(btn => btn.addEventListener('click', () => updateScene(btn.dataset.scene as SceneKey)));
