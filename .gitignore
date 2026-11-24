@@ -1,0 +1,27 @@
+# Blender autosaves and temporary files
+*.blend1
+*.blend2
+*.blend3
+*.tmp
+*.bak
+
+# Generated exports and caches
+/blender/exports/
+/blender/cache/
+/blender/renders/
+
+# Local Python and Node environments
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+!.env.example
