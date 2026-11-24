@@ -27,36 +27,35 @@ const materials: Record<MaterialKey, THREE.MeshStandardMaterial> = {
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.innerHTML = `
-  <header class="topbar">
-    <div class="brand-mark">TMX</div>
-    <div><p class="eyebrow">MAQUETA ESCOLAR · PROTOTIPO 0.3</p><h1>Estudio Telmex <span>3D</span></h1></div>
-    <div class="top-meta"><span class="live-dot"></span>Escala 1:200 <b>·</b> Modelo + guía escolar</div>
-  </header>
-  <main class="workspace">
-    <aside class="sidebar left-panel">
-      <section class="panel-section intro"><p class="eyebrow">CONTROL DE MAQUETA</p><h2>Construye la idea.</h2><p>Explora una volumetría editable del Auditorio Telmex y prueba materiales antes de fabricar.</p></section>
-      <section class="panel-section"><div class="section-heading"><span>ESCENARIO</span><span class="chip">3 CONFIG.</span></div><div class="scene-buttons"><button data-scene="concert" class="scene-btn active"><strong>Concierto</strong><small>Plataforma adelantada</small></button><button data-scene="theatre" class="scene-btn"><strong>Teatro</strong><small>Escenario profundo</small></button><button data-scene="open" class="scene-btn"><strong>Platea abierta</strong><small>Acceso general</small></button></div></section>
-      <section class="panel-section"><div class="section-heading"><span>CAPAS VISUALES</span></div><label class="switch-row"><span>Techo desmontable</span><input id="roofToggle" type="checkbox" checked><i></i></label><label class="switch-row"><span>Interior visible</span><input id="interiorToggle" type="checkbox" checked><i></i></label><label class="switch-row"><span>Entorno y plaza</span><input id="siteToggle" type="checkbox" checked><i></i></label></section>
-      <section class="panel-section selected-panel"><div class="section-heading"><span>PIEZA SELECCIONADA</span><span id="selectionLabel" class="chip">NINGUNA</span></div><div id="objectDetails" class="object-details">Selecciona una pieza en la vista para cambiar su material.</div><div class="material-grid"><button data-material="concrete"><i class="swatch concrete"></i>Cartón gris</button><button data-material="glass"><i class="swatch glass"></i>Acetato</button><button data-material="metal"><i class="swatch metal"></i>Cartulina negra</button><button data-material="warm"><i class="swatch warm"></i>Papel madera</button></div></section>
-    </aside>
-    <section class="viewport-shell"><div id="viewport"></div></section>
-    <aside class="sidebar right-panel"><section class="panel-section"><p class="eyebrow">FICHA DE PROYECTO</p><div class="metric"><span>Escenario</span><strong>33 × 24 m</strong></div><div class="metric"><span>Construcción</span><strong>31,000 m²</strong></div><div class="metric"><span>Base escolar</span><strong>80 × 60 cm</strong></div></section><section class="panel-section guide-panel"><p class="eyebrow">GUÍA DE FABRICACIÓN</p><h3>Hazlo con materiales escolares.</h3><p>La maqueta está pensada para una base de 80 × 60 cm y un presupuesto máximo aproximado de $900 MXN.</p><div class="budget-total"><span>Presupuesto objetivo</span><strong>$784 MXN</strong></div><a class="outline-btn primary-ai" href="./guia-maqueta.html" target="_blank" rel="noreferrer">Abrir guía completa</a><p class="guide-note">Incluye lista de compras, medidas, pasos, referencias e imágenes conceptuales.</p></section><section class="panel-section visual-panel"><p class="eyebrow">REFERENCIAS VISUALES</p><div class="thumbs"><a href="./imagenes/maqueta-exterior.png" target="_blank"><img src="./imagenes/maqueta-exterior.png" alt="Vista exterior conceptual"></a><a href="./imagenes/maqueta-desmontable.png" target="_blank"><img src="./imagenes/maqueta-desmontable.png" alt="Vista desmontable conceptual"></a></div><a class="text-btn guide-link" href="./guia-maqueta.html" target="_blank">Ver documento con imágenes →</a></section><section class="panel-section legend"><div class="section-heading"><span>LEYENDA</span></div><p><i class="legend-dot verified"></i>Dato público verificado</p><p><i class="legend-dot estimate"></i>Geometría estimada</p><p><i class="legend-dot editable"></i>Pieza editable</p></section></aside>
+  <main class="only-page">
+    <section class="model-stage">
+      <div id="viewport"></div>
+      <div class="model-tools">
+        <div class="tool-row"><button data-scene="concert" class="scene-btn active">Concierto</button><button data-scene="theatre" class="scene-btn">Teatro</button><button data-scene="open" class="scene-btn">Platea</button></div>
+        <div class="tool-row"><label><input id="roofToggle" type="checkbox" checked> Techo desmontable</label><label><input id="interiorToggle" type="checkbox" checked> Interior</label><label><input id="siteToggle" type="checkbox" checked> Entorno</label></div>
+        <div class="tool-row material-row"><span id="selectionLabel">NINGUNA</span><button data-material="concrete">Cartón gris</button><button data-material="glass">Acetato</button><button data-material="metal">Cartulina negra</button><button data-material="warm">Papel madera</button></div>
+      </div>
+    </section>
+    <section class="guide-inline">
+      <iframe title="Documento escolar de la maqueta" src="./guia-maqueta.html"></iframe>
+    </section>
   </main>
 `;
+
 
 const viewport = document.querySelector<HTMLDivElement>('#viewport')!;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x10151a);
 scene.fog = new THREE.Fog(0x10151a, 30, 70);
 const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-camera.position.set(19, 15, 22);
+camera.position.set(20, 11.5, 24);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 viewport.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 2, 0);
+controls.target.set(0, 2.8, 0);
 controls.enableDamping = true;
 controls.maxPolarAngle = Math.PI * 0.48;
 controls.minDistance = 10;
@@ -68,7 +67,7 @@ keyLight.position.set(-12, 24, 14); keyLight.castShadow = true; scene.add(keyLig
 const fillLight = new THREE.PointLight(0x74c4d5, 18, 30); fillLight.position.set(2, 7, 2); scene.add(fillLight);
 
 const editable: Record<string, THREE.Object3D> = {};
-const model = new THREE.Group(); model.rotation.y = -0.18; scene.add(model);
+const model = new THREE.Group(); model.rotation.y = -0.08; scene.add(model);
 const site = new THREE.Group(); model.add(site);
 const building = new THREE.Group(); model.add(building);
 const interior = new THREE.Group(); building.add(interior);
@@ -90,6 +89,8 @@ const body = addMesh('Volumen oval principal', new THREE.CylinderGeometry(1, 1, 
 const lowerBand = addMesh('Banda de acceso', new THREE.CylinderGeometry(1, 1, 1.25, 64), 'metal', building, [0, 1.35, 0]); lowerBand.scale.set(10.25, 1, 6.1);
 const lobby = addMesh('Vestíbulo curvo acristalado', new THREE.CylinderGeometry(8.65, 8.65, 2.45, 64, 1, true, -0.78, 1.56), 'glass', building, [0, 2.25, 4.4]); lobby.scale.z = 0.62;
 const lobbyRoof = addMesh('Alero del vestíbulo', new THREE.CylinderGeometry(8.9, 8.9, 0.22, 64, 1, true, -0.78, 1.56), 'metal', building, [0, 3.63, 4.4]); lobbyRoof.scale.z = 0.64;
+for (let i = 0; i < 13; i++) { const x = -5.8 + i * 0.97; const mullion = addMesh(`Montante de vestíbulo ${i + 1}`, new THREE.BoxGeometry(0.06, 2.25, 0.08), 'metal', building, [x, 2.25, 5.35]); mullion.rotation.y = (x / 8) * 0.16; }
+for (let i = 0; i < 5; i++) addMesh(`Escalón de acceso ${i + 1}`, new THREE.BoxGeometry(12.5 - i * 0.6, 0.16, 0.42), 'concrete', building, [0, 0.28 + i * 0.16, 6.05 + i * 0.38]);
 const roofShell = addMesh('Gran cubierta ovalada', new THREE.SphereGeometry(1, 64, 24, 0, Math.PI * 2, 0, Math.PI * 0.52), 'metal', roof, [0, 6.15, -0.15]); roofShell.scale.set(11.9, 4.5, 7.15);
 const roofRim = addMesh('Borde de cubierta', new THREE.TorusGeometry(1, 0.11, 10, 96), 'metal', roof, [0, 5.5, -0.15], [Math.PI / 2, 0, 0]); roofRim.scale.set(11.45, 6.8, 1);
 for (let side of [-1, 1]) for (let i = 0; i < 13; i++) {
