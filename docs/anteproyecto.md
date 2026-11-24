@@ -74,3 +74,11 @@ Preparar una lámina con escala, norte, leyenda de materiales, diagrama de módu
 - Se entiende la relación entre acceso, sala, escenario y plaza.
 - Los materiales están etiquetados y se puede repetir la fabricación.
 - Cada medida crítica tiene fuente o está identificada como estimación.
+
+## Qué cambió en el prototipo 3D
+
+La segunda iteración prioriza los rasgos que definen la lectura del edificio: gran cubierta ovalada, vestíbulo frontal curvo acristalado, volumen elíptico principal, plinto oscuro, muros laterales nervurados, explanada de acceso, gradas radiales, butacas repetitivas, barandales y escenario móvil. Se añadieron texturas procedurales de concreto y pavimento para que la escena no dependa todavía de fotografías con derechos de uso.
+
+## Escala de trabajo recomendada
+
+Para una maqueta grande pero todavía transportable se mantiene 1:200. Como regla práctica, 1 m real equivale a 5 mm de maqueta. El escenario de 33 × 24 m ocupa aproximadamente 16.5 × 12 cm. Una base de 120 × 90 cm representa una porción del entorno, no los 50,000 m² de terreno completo. Si se busca más detalle interior, una segunda maqueta separada a 1:100 puede representar sala, gradas y escenario, pero será mucho más grande.

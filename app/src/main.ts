@@ -5,12 +5,24 @@ import './styles.css';
 type MaterialKey = 'concrete' | 'glass' | 'metal' | 'warm' | 'landscape';
 type SceneKey = 'concert' | 'theatre' | 'open';
 
+function createConcreteTexture() {
+  const canvas = document.createElement('canvas'); canvas.width = 256; canvas.height = 256;
+  const ctx = canvas.getContext('2d')!; ctx.fillStyle = '#aaa9a0'; ctx.fillRect(0, 0, 256, 256);
+  for (let i = 0; i < 1800; i++) { const shade = 135 + Math.floor(Math.random() * 45); ctx.fillStyle = `rgba(${shade},${shade},${shade - 3},${0.08 + Math.random() * 0.14})`; ctx.fillRect(Math.random() * 256, Math.random() * 256, 1 + Math.random() * 3, 1 + Math.random() * 3); }
+  const texture = new THREE.CanvasTexture(canvas); texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(3, 3); return texture;
+}
+function createPavingTexture() {
+  const canvas = document.createElement('canvas'); canvas.width = 256; canvas.height = 256; const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = '#766f66'; ctx.fillRect(0, 0, 256, 256); ctx.strokeStyle = 'rgba(220,210,190,.28)'; ctx.lineWidth = 2;
+  for (let n = 0; n <= 256; n += 24) { ctx.beginPath(); ctx.moveTo(n, 0); ctx.lineTo(n, 256); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, n); ctx.lineTo(256, n); ctx.stroke(); }
+  const texture = new THREE.CanvasTexture(canvas); texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(6, 5); return texture;
+}
 const materials: Record<MaterialKey, THREE.MeshStandardMaterial> = {
-  concrete: new THREE.MeshStandardMaterial({ color: 0xb8b7ad, roughness: 0.82 }),
-  glass: new THREE.MeshPhysicalMaterial({ color: 0x7bc5d6, roughness: 0.12, metalness: 0.08, transmission: 0.25, transparent: true, opacity: 0.74 }),
-  metal: new THREE.MeshStandardMaterial({ color: 0x34414a, roughness: 0.34, metalness: 0.72 }),
+  concrete: new THREE.MeshStandardMaterial({ color: 0xb8b7ad, roughness: 0.9, map: createConcreteTexture() }),
+  glass: new THREE.MeshPhysicalMaterial({ color: 0x76c5d3, roughness: 0.08, metalness: 0.12, transmission: 0.2, transparent: true, opacity: 0.68 }),
+  metal: new THREE.MeshStandardMaterial({ color: 0x34414a, roughness: 0.3, metalness: 0.8 }),
   warm: new THREE.MeshStandardMaterial({ color: 0xc87946, roughness: 0.62 }),
-  landscape: new THREE.MeshStandardMaterial({ color: 0x526c51, roughness: 0.95 })
+  landscape: new THREE.MeshStandardMaterial({ color: 0x526c51, roughness: 0.95, map: createPavingTexture() })
 };
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
@@ -71,22 +83,31 @@ function addMesh(name: string, geometry: THREE.BufferGeometry, material: Materia
   mesh.castShadow = true; mesh.receiveShadow = true; parent.add(mesh); editable[name] = mesh; return mesh;
 }
 
-const ground = addMesh('Entorno y plaza', new THREE.BoxGeometry(27, 0.35, 21), 'landscape', site, [0, -0.2, 0]);
-const plaza = addMesh('Plaza de acceso', new THREE.BoxGeometry(17, 0.12, 7), 'concrete', site, [0, 0.06, 7]);
-for (let i = -5; i <= 5; i += 2) addMesh(`Acceso ${i}`, new THREE.CylinderGeometry(0.16, 0.16, 0.9, 12), 'metal', site, [i, 0.5, 5.2]);
-const base = addMesh('Volumen principal', new THREE.BoxGeometry(16, 5.5, 10.5), 'concrete', building, [0, 2.6, 0]);
-const front = addMesh('Fachada de vidrio', new THREE.BoxGeometry(12.5, 3.0, 0.22), 'glass', building, [0, 2.05, 5.35]);
-const canopy = addMesh('Marquesina principal', new THREE.BoxGeometry(13.4, 0.22, 3.1), 'metal', building, [0, 4.1, 6.35], [-0.12, 0, 0]);
-const roofBody = addMesh('Techo desmontable', new THREE.CylinderGeometry(8.9, 8.4, 2.1, 48, 1, false, -Math.PI * 0.5, Math.PI), 'metal', roof, [0, 5.9, 0], [0, 0, Math.PI / 2]);
-const hall = addMesh('Sala principal', new THREE.BoxGeometry(12.5, 1.2, 7.5), 'warm', interior, [0, 1.0, -0.3]);
-const stage = addMesh('Escenario', new THREE.BoxGeometry(7.1, 0.35, 3.0), 'warm', interior, [0, 1.9, -3.6]);
-const screen = addMesh('Pantalla', new THREE.BoxGeometry(6.6, 2.4, 0.12), 'glass', interior, [0, 3.2, -5.0]);
-for (let row = 0; row < 5; row++) {
-  const width = 10.5 - row * 0.65;
-  addMesh(`Grada ${row + 1}`, new THREE.BoxGeometry(width, 0.28, 0.75), 'metal', interior, [0, 1.45 + row * 0.48, 1.8 + row * 0.82]);
+const ground = addMesh('Entorno y plaza', new THREE.BoxGeometry(29, 0.35, 23), 'landscape', site, [0, -0.2, 0]);
+const plaza = addMesh('Explanada de acceso', new THREE.BoxGeometry(21, 0.14, 7.2), 'concrete', site, [0, 0.08, 8.2]);
+const darkPlinth = addMesh('Plinto oscuro', new THREE.CylinderGeometry(1, 1, 1.1, 64), 'metal', building, [0, 0.48, 0]); darkPlinth.scale.set(10.5, 1, 6.25);
+const body = addMesh('Volumen oval principal', new THREE.CylinderGeometry(1, 1, 5.1, 64), 'concrete', building, [0, 3.0, 0]); body.scale.set(10.1, 1, 6.0);
+const lowerBand = addMesh('Banda de acceso', new THREE.CylinderGeometry(1, 1, 1.25, 64), 'metal', building, [0, 1.35, 0]); lowerBand.scale.set(10.25, 1, 6.1);
+const lobby = addMesh('Vestíbulo curvo acristalado', new THREE.CylinderGeometry(8.65, 8.65, 2.45, 64, 1, true, -0.78, 1.56), 'glass', building, [0, 2.25, 4.4]); lobby.scale.z = 0.62;
+const lobbyRoof = addMesh('Alero del vestíbulo', new THREE.CylinderGeometry(8.9, 8.9, 0.22, 64, 1, true, -0.78, 1.56), 'metal', building, [0, 3.63, 4.4]); lobbyRoof.scale.z = 0.64;
+const roofShell = addMesh('Gran cubierta ovalada', new THREE.SphereGeometry(1, 64, 24, 0, Math.PI * 2, 0, Math.PI * 0.52), 'metal', roof, [0, 6.15, -0.15]); roofShell.scale.set(11.9, 4.5, 7.15);
+const roofRim = addMesh('Borde de cubierta', new THREE.TorusGeometry(1, 0.11, 10, 96), 'metal', roof, [0, 5.5, -0.15], [Math.PI / 2, 0, 0]); roofRim.scale.set(11.45, 6.8, 1);
+for (let side of [-1, 1]) for (let i = 0; i < 13; i++) {
+  const z = -4.9 + i * 0.82; const x = side * (8.15 + Math.sin((i / 12) * Math.PI) * 0.55);
+  const rib = addMesh(`Muro nervurado ${side === -1 ? 'izq' : 'der'} ${i + 1}`, new THREE.BoxGeometry(0.22, 4.55 + Math.sin((i / 12) * Math.PI) * 0.75, 0.34), 'concrete', building, [x, 2.65, z]); rib.rotation.z = side * 0.08;
 }
-const sideLeft = addMesh('Ala lateral izquierda', new THREE.BoxGeometry(2.0, 4.8, 8.8), 'concrete', building, [-8.2, 2.4, -0.2], [0, 0, -0.08]);
-const sideRight = addMesh('Ala lateral derecha', new THREE.BoxGeometry(2.0, 4.8, 8.8), 'concrete', building, [8.2, 2.4, -0.2], [0, 0, 0.08]);
+for (let i = -5; i <= 5; i += 2) addMesh(`Bolardo acceso ${i}`, new THREE.CylinderGeometry(0.12, 0.12, 0.75, 12), 'metal', site, [i, 0.46, 5.2]);
+for (let i = -8; i <= 8; i += 2) { const line = addMesh(`Junta plaza ${i}`, new THREE.BoxGeometry(0.025, 0.02, 6.3), 'metal', site, [i, 0.17, 8.2]); (line.material as THREE.MeshStandardMaterial).color.set(0x2a2927); }
+
+const hall = addMesh('Sala principal', new THREE.CylinderGeometry(1, 1, 0.8, 64), 'warm', interior, [0, 1.25, -0.65]); hall.scale.set(6.5, 1, 4.65);
+const stage = addMesh('Escenario móvil', new THREE.BoxGeometry(7.0, 0.32, 2.85), 'warm', interior, [0, 1.8, -4.05]);
+const stageFrame = addMesh('Marco escénico', new THREE.BoxGeometry(7.6, 2.7, 0.18), 'metal', interior, [0, 3.2, -5.3]);
+const screen = addMesh('Pantalla de escenario', new THREE.BoxGeometry(6.55, 2.15, 0.08), 'glass', interior, [0, 3.25, -5.42]);
+for (let row = 0; row < 10; row++) {
+  const radiusX = 4.0 + row * 0.62; const radiusZ = 2.6 + row * 0.52; const angleSpan = Math.PI * 0.72;
+  for (let seat = 0; seat < 17; seat++) { const a = Math.PI / 2 - angleSpan / 2 + (seat / 16) * angleSpan; const x = Math.cos(a) * radiusX; const z = Math.sin(a) * radiusZ + 0.65; const bench = addMesh(`Butacas ${row + 1}-${seat + 1}`, new THREE.BoxGeometry(0.28, 0.18, 0.34), 'metal', interior, [x, 1.55 + row * 0.28, z]); bench.rotation.y = -a + Math.PI / 2; }
+}
+for (let i = 0; i < 9; i++) { const ring = addMesh(`Barandal balcón ${i + 1}`, new THREE.TorusGeometry(4.1 + i * 0.55, 0.035, 6, 64, Math.PI * 0.7), 'metal', interior, [0, 2.0 + i * 0.28, 0.65], [Math.PI / 2, 0, Math.PI / 2]); ring.scale.z = 0.7; }
 
 function setMaterial(key: MaterialKey) { if (selected && 'material' in selected) (selected as THREE.Mesh).material = materials[key]; }
 function updateScene(next: SceneKey) {
