@@ -55,3 +55,9 @@ El costo dependerá del tamaño final y de las herramientas disponibles. Como gu
 - **Piezas que no encajan:** agregar tolerancias y hacer una prueba de unión antes de fabricar todo.
 - **Calor o cables visibles:** usar LED de baja potencia y canaletas ocultas.
 - **Medidas inciertas:** no fijar piezas definitivas hasta completar la hoja de verificación.
+
+## Versión escolar de bajo costo
+
+Para una maqueta escolar, la selección predeterminada cambia a materiales de papelería: cartón cascarón o cartón gris para la base, cartón pluma/foamboard para volúmenes, cartulina opalina para revestimientos, papel batería o cartón corrugado para gradas, acetato de carpeta para el vestíbulo, palitos de madera para barandales, foamy para zonas oscuras y pinturas acrílicas escolares. El MDF, el acrílico rígido, la impresión 3D y la cortadora láser quedan como opciones avanzadas, no como requisitos.
+
+La base recomendada se reduce a 80 × 60 cm para que el proyecto sea fácil de transportar a la escuela. Puede dividirse en dos placas de cartón cascarón reforzadas por debajo con tiras de cartón. Para pegar, usar pegamento blanco en superficies grandes y silicón frío o caliente con supervisión adulta en uniones puntuales. No hace falta fabricar cada butaca: se pueden representar por filas con tiras de cartulina y reservar los detalles para el frente, la cubierta y las gradas.

@@ -37,3 +37,7 @@ Para el código, scripts y documentación original del proyecto puede usarse MIT
 ## Aplicación visible en GitHub Pages
 
 La compilación actual también está en la raíz de `main` para que GitHub Pages pueda publicarla usando `main` + `/ (root)`. Al abrir la URL de Pages debe aparecer **Estudio Telmex 3D**, no solo esta documentación. El panel **Diseña con IA** intenta conectarse a Ollama en `localhost:11434`; la IA corre en la computadora local del usuario y no dentro de GitHub Pages.
+
+## Enfoque escolar
+
+La versión actual está pensada para una maqueta escolar. Los materiales predeterminados son cartón cascarón, cartón pluma, cartulina, acetato, papel batería, palitos de madera y pintura acrílica escolar. La base sugerida es de 80 × 60 cm. Las opciones de MDF, corte láser, impresión 3D y automatización quedan como mejoras futuras, no como requisitos.

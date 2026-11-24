@@ -1,48 +1,49 @@
-# Procedimiento de fabricación de la maqueta
+# Procedimiento escolar paso a paso
 
-## Decisión inicial
+## 1. Preparar la base
 
-Usar 1:200 para la maqueta general, con base modular de 120 × 90 cm dividida en cuatro paneles de 60 × 45 cm. La maqueta debe ser desmontable: techo, fachada frontal y sala interior se retiran para revisar y cambiar el diseño.
+Corta dos rectángulos de cartón cascarón de 80 × 60 cm. Pégalos juntos para evitar que se doblen. Marca con lápiz el centro, el frente de acceso y el contorno aproximado del edificio.
 
-## Material predeterminado
+## 2. Dibujar la planta simplificada
 
-- Base: MDF de 6 mm, con refuerzos inferiores de madera.
-- Volúmenes grandes: foamboard de 5 mm o PVC espumado de 3 mm.
-- Concreto: cartón gris o foamboard revestido y pintado en gris; añadir una textura muy fina, no arena gruesa.
-- Vestíbulo: acrílico transparente o PETG de 0.5–1 mm, con película azul grisácea.
-- Cubierta: cartón plastificado, lámina de estireno o piezas cortadas en CNC/impresas en 3D según el presupuesto.
-- Costillas y nervaduras: tiras de estireno, cartón gris cortado a láser o impresión 3D.
-- Gradas y butacas: impresión 3D en PLA; para el primer prototipo puede usarse cartulina cortada.
-- Iluminación: LED de 5 V, cableado bajo la base y conectores para poder desmontar.
-- Fijación: imanes pequeños en techo, fachada y paneles interiores.
+A escala 1:200, usa 5 mm por cada metro real. Toma como referencias verificadas el escenario de 33 × 24 m y la distancia máxima publicada de 64 m al escenario. La forma exterior debe considerarse una aproximación hasta contar con un plano autorizado.
 
-La combinación se apoya en las ventajas habituales de cada material: foamboard para piezas ligeras y rápidas, MDF para estructura, acrílico para cristal, cartón gris para elementos rígidos y PLA para piezas repetitivas. [1]
+## 3. Construir el plinto
 
-## Paso a paso
+Pega dos o tres capas de cartón gris o cartulina negra para formar la base oscura del auditorio. Deja un espacio frontal para la explanada.
 
-1. **Preparar el modelo digital.** Separar el edificio en `base`, `plinto`, `volumen oval`, `vestíbulo`, `cubierta`, `costillas`, `sala`, `gradas` y `escenario`.
-2. **Verificar escala.** Revisar que 1 m real se convierta en 5 mm. Exportar una sola costilla, una butaca y un fragmento de cubierta como prueba.
-3. **Cortar la base.** Unir los cuatro paneles de MDF por debajo, dejando registros para cables y uniones.
-4. **Construir el plinto.** Usar capas de MDF o foamboard para levantar la plataforma oscura inferior.
-5. **Formar el volumen ovalado.** Usar costillas transversales y piel de foamboard/PVC; no intentar doblar una sola lámina grande si se deforma.
-6. **Montar el vestíbulo.** Crear un marco curvo y pegar el acrílico después de pintar la estructura.
-7. **Fabricar la cubierta.** Hacerla como un cascarón separado, con borde rígido e imanes. Debe poder retirarse sin tocar las gradas.
-8. **Construir el interior.** Colocar gradas radiales, butacas, barandales y escenario móvil. Mantener tres piezas de escenario intercambiables.
-9. **Instalar iluminación.** Probar LED antes de cerrar fachadas; ocultar cables en canales bajo la base.
-10. **Aplicar acabados.** Pintar primero concreto y metal, después vidrio, señalización y detalles. Usar una muestra de cada material antes de aplicar todo.
-11. **Documentar.** Fotografiar cada módulo, anotar medidas reales y corregir el modelo digital con lo aprendido.
+## 4. Formar el cuerpo ovalado
 
-## Orden de detalle
+Recorta varias costillas curvas de cartón y pégalas verticalmente. Cubre las costillas con tiras de cartón pluma o cartulina, en vez de intentar doblar una sola pieza. Esto permite corregir la forma si no queda simétrica.
 
-Primero deben quedar bien la silueta, la cubierta, el frente de vidrio, el plinto y la relación con la plaza. Después se añaden nervaduras, gradas, butacas, iluminación y señalización. Un modelo con buena proporción y pocos detalles se verá más convincente que uno saturado con medidas incorrectas.
+## 5. Hacer la cubierta
 
-## Referencias y límites
+Corta la cubierta como una pieza independiente. Usa una plantilla ovalada y refuérzala por debajo con dos o tres tiras de cartón. Píntala de gris claro y deja un borde más oscuro para representar el espesor.
 
-El sitio oficial publica 31,000 m² construidos, escenario de 33 × 24 m, tres plataformas y una distancia máxima de 64 m al escenario. [2] Napresa describe muros nervurados curvos de concreto arquitectónico gris y gradas estructurales, rasgos que se incorporaron al modelo. [3] La descripción acústica confirma que es una sala flexible con elevadores, muros móviles, pantallas y asientos portátiles. [4] Las proporciones exteriores siguen siendo una interpretación de estudio hasta contar con planos autorizados o un levantamiento propio.
+## 6. Construir el vestíbulo
 
-## Referencias
+Forma el marco curvo con cartulina. Pega el acetato por la parte interior para simular el vidrio. No uses pegamento líquido directamente sobre el acetato; aplícalo en el marco.
 
-[1]: https://escala13d.com/pages/que-materiales-son-los-mejores-para-hacer-maquetas "Materiales para maquetas arquitectónicas"
-[2]: https://www.auditorio-telmex.com/historia.php "Auditorio TELMEX — Historia y características"
-[3]: https://www.napresa.com.mx/proyecto/auditorio-para-espectaculos "Napresa — Auditorio para espectáculos"
-[4]: https://akustiks.com/project/auditorio-telmex/ "Akustiks — Auditorio Telmex"
+## 7. Añadir nervaduras
+
+Corta tiras delgadas y repetidas de cartulina gris. Pégalas en los laterales siguiendo la curva del edificio. Estas líneas son importantes porque representan los muros nervurados de concreto descritos en referencias técnicas.
+
+## 8. Construir el interior
+
+Haz gradas con tiras escalonadas de papel batería o cartón. Coloca el escenario en una pieza separada para poder cambiarlo entre concierto, teatro y platea abierta. Las butacas pueden ser líneas ordenadas en lugar de piezas individuales.
+
+## 9. Añadir plaza y entorno
+
+Usa cartulina gris para la explanada. Dibuja juntas de pavimento con regla. Agrega árboles sencillos con palitos y papel verde, sin saturar la base.
+
+## 10. Pintar y limpiar
+
+Pinta por grupos: concreto gris, plinto negro, vidrio azul grisáceo y escenario café. Espera a que seque cada capa. Corrige bordes con un pincel fino o una tira de cartulina.
+
+## 11. Presentar
+
+Coloca una pequeña ficha con el nombre del proyecto, escala 1:200, materiales escolares utilizados y una nota que diga “modelo conceptual para fines escolares”.
+
+## Orden de prioridad
+
+Si falta tiempo, termina en este orden: silueta de la cubierta, vestíbulo frontal, plinto, nervaduras laterales, explanada, gradas y escenario. El modelo se verá convincente por su forma general antes que por la cantidad de detalles.
