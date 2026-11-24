@@ -33,3 +33,7 @@ Se propone trabajar a **escala 1:200** para el edificio y una porción del entor
 ## Licencia sugerida
 
 Para el código, scripts y documentación original del proyecto puede usarse MIT o CC BY 4.0. Las fotografías, planos, marcas y materiales de terceros conservan sus propias condiciones de uso.
+
+## Aplicación visible en GitHub Pages
+
+La compilación actual también está en la raíz de `main` para que GitHub Pages pueda publicarla usando `main` + `/ (root)`. Al abrir la URL de Pages debe aparecer **Estudio Telmex 3D**, no solo esta documentación. El panel **Diseña con IA** intenta conectarse a Ollama en `localhost:11434`; la IA corre en la computadora local del usuario y no dentro de GitHub Pages.
