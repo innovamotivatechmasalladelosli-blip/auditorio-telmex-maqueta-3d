@@ -24,7 +24,7 @@ La primera versión se propone a **1:200**. Las conversiones de referencia son:
 - 33 m de frente de escenario → 16.5 cm.
 - 24 m de fondo de escenario → 12 cm.
 - 64 m hasta el espectador más lejano → 32 cm.
-- 380 m² de escenario adelantado → aproximadamente 1.90 m² en la realidad de la maqueta si se interpreta como superficie a escala de área; para piezas simples conviene usar la geometría real de la plataforma y no una reducción por área aislada.
+- 380 m² de escenario adelantado → aproximadamente 95 cm² de superficie a escala 1:200 (porque las áreas se reducen por 200²); para piezas simples conviene usar la geometría real de la plataforma y no una reducción por área aislada.
 
 Para una maqueta grande, se recomienda una base aproximada de 120 × 90 cm, dividida en cuatro paneles de 60 × 45 cm. Esta base permite moverla, almacenarla y reparar cada módulo. La forma exacta del edificio deberá trazarse a partir de fotografías frontales, laterales y vistas aéreas, porque las fuentes públicas consultadas no proporcionan un plano arquitectónico completo.
 
